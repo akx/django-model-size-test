@@ -4,8 +4,9 @@ from django.db.models.base import ModelBase
 MODELS = {}
 
 for x in range(0, 256, 16):
+    x = max(1, x)
     fields = [(f"field{f}", CharField(max_length=100)) for f in range(x)]
-    name = f"Model{x}"
+    name = f"Model{x:03d}"
     model = ModelBase(
         name,
         (Model,),
